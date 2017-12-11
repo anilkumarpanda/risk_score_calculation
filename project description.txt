@@ -1,0 +1,32 @@
+Problem definition
+
+Adyen is looking to help a large Food ordering merchant optimize its risk settings. 
+Adyen has a Rule Based Risk Engine with 78 different rules. 
+A merchant can assign a score to each of the rules, if the combined score of the rules passes a threshold of 100, 
+Adyen's risk engine will automatically block the transaction.
+The merchant has asked us if we could determine the optimal risk score for them. 
+What is important for them is that the chargeback rate should at all time stay below 1%, a chargeback costs them 15 EUR, +50% of the price of the
+order while declining a transaction that turned out to be non-fraudulent (false positive) also costs them 50% of the price of the order (in the form 
+of missed revenue). 
+
+Data overview
+
+* creationdate - date of transaction 
+* bin - Bank Identification Number - The first 6 digits of a credit card that identify what bank issued the card
+* checks - Array of booleans where 1 indicates that the check triggers
+* amount - Order amount in Euros
+* declined - If the issuer declined the transaction
+* fraud_refusal - If the transaction was blocked by Adyen’s risk engine (which runs before we send it to the issuer)
+* fraud - If the transaction came back as a fraudulent chargeback (which means the transaction was approved)
+* If both declined and fraud_refusal are 0, then the transaction was approved
+
+Your task
+
+* Analyse the data (preferably in R or Python) and find the 'optimal' risk scores.
+* Create a 2/3 slide presentation on your approach and include a slide where you would show how you would solve this given more time.
+* Share your code for discussion
+
+Tips
+
+* Think about what part of the dataset to use and how you are using it.
+* You have limited time, stick to relatively simple ML Algorithms.
